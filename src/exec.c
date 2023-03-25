@@ -25,7 +25,8 @@ command_exec(char **cmd) {
 
 void
 runcmd(char **cmd) {
-	if (strcmp(cmd[0], "cd") == 0) cd(cmd[1]);
+	if (cmd[0][0] == '\0') return;
+	else if (strcmp(cmd[0], "cd") == 0) cd(cmd[1]);
 	else if(strcmp(cmd[0], "help") == 0) help();
 	else command_exec(cmd);
 }
