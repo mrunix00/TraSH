@@ -7,7 +7,7 @@ cd(char *directory) {
 		return;
 	}
 	if (chdir(directory) == -1)
-		fprintf(stderr, "[-] cd error: %s", strerror(errno));
+		fprintf(stderr, "[-] cd error: %s\n", strerror(errno));
 }
 
 void help() {
