@@ -10,6 +10,8 @@ read_command() {
 		if (ferror(stdin)) {
 			fprintf(stderr, "[-] Failed reading stdin: %s\n", strerror(errno));
 			return NULL;
+		} else if (c == '\b') {
+			if (i > 0) i--;
 		} else if (c == '\\') {
 			c = getchar();
 			if (c == '\n') continue;
