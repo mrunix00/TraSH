@@ -1,8 +1,11 @@
+#include <ctype.h>
 #include <errno.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <termios.h>
+#include <unistd.h>
 
 #ifdef linux
 #include <linux/limits.h>
@@ -10,5 +13,8 @@
 #include <limits.h>
 #endif
 
-char	**read_command();
-void	  free_command(char **cmd);
+int	  readchar();
+char	 *readline();
+char 	**parseline(char *line);
+
+void	  free_command(char **);
