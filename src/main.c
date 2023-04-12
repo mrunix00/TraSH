@@ -9,7 +9,7 @@ main() {
 		printf("[trash]$ ");
 		line = readline();
 		command = parseline(line);
-		if (strcmp(command[0], "exit") == 0 || **command == '\0') {
+		if (strcmp(command[0], "exit") == 0) {
 			free(line);
 			free_command(command);
 			return EXIT_SUCCESS;

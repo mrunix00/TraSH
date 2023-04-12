@@ -28,6 +28,8 @@ readline() {
 		}
 		switch (c) {
 			case 4:
+				length = -1;
+				goto end;
 			case '\n':
 				if (length > 0 && input[length - 1] == '\\') {
 					length--;pos--;
@@ -80,6 +82,11 @@ readline() {
 		}
 	}
 end:
+	if (length == -1) {
+		free(input);
+		input = strdup("exit");
+		return input;
+	}
 	if (length >= size)
 		input = realloc(input, size + 1);
 	input[length] = '\0';
