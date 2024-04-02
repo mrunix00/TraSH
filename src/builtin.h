@@ -5,4 +5,4 @@
 #include <unistd.h>
 
 void	cd(char *directory);
-void	help();
+void	help(void);

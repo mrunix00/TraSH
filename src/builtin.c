@@ -10,7 +10,7 @@ cd(char *directory) {
 		fprintf(stderr, "[-] cd error: %s\n", strerror(errno));
 }
 
-void help() {
+void help(void) {
 	printf("TraSH shell 0.0.1 by Mr.UNIX (Ibrahim Kaikaa)\n"
 	    "Built-in commands:\n" "cd [dir]\n" "help\n");
 }

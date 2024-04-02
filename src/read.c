@@ -1,7 +1,13 @@
 #include "read.h"
 
+#ifdef linux
+#include <linux/limits.h>
+#else
+#include <limits.h>
+#endif
+
 int
-readchar() {
+readchar(void) {
 	struct termios oldattr, newattr;
 	int ch;
 	tcgetattr(STDIN_FILENO, &oldattr);
@@ -14,7 +20,7 @@ readchar() {
 }
 
 char*
-readline() {
+readline(void) {
 	char *input;
 	int c, pos = 0, length = 0;
 	size_t size = 1024;
@@ -99,7 +105,7 @@ char**
 parseline(char *line) {
 	char **output = malloc(sizeof(char*)),
 	      *c = line,
-	       buff[ARG_MAX];
+	      *buff = malloc(ARG_MAX);
 	size_t number_of_arguments = 0;
 	int i = 0;
 	while (1) {
@@ -124,7 +130,7 @@ parseline(char *line) {
 		output[number_of_arguments++] = strdup("exit");
 	}
 	output[number_of_arguments] = NULL;
-
+	free(buff);
 	return output;
 }
 
